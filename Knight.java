@@ -1,5 +1,7 @@
 public class Knight {
 
+    private String name;
+    
     // instance variables (knight features)
 
 
