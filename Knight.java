@@ -7,7 +7,13 @@ public class Knight {
 
     // constructors (if given name or not)
 
+    public Knight(String name) {
+        this.name = name;
+    }
 
+     public Knight() {
+        this.name = "Lancelot";
+    }
   
     // getters 
 
