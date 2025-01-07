@@ -12,7 +12,7 @@ public class Main {
         String userName = myObj.nextLine();
         
         while (menu == true) {
-            switch("c") {  
+            switch(c) {  
                 case "1":
                     System.out.println("Start game:);
                     menu = false;
