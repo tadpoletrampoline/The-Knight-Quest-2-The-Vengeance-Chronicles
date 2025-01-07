@@ -17,6 +17,9 @@ public class Knight {
   
     // getters 
 
-
+    public getName() {
+        return this.name;
+    }
+    
     // setters
 }
