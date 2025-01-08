@@ -19,9 +19,8 @@ static void menu(){
     public static void main(String[] args) {
 
         menu();
-        /*Boolean menu = true;
-        Scanner c = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("menu ramble... press one to start");*/
+        //Boolean menu = true;
+        //Scanner c = new Scanner(System.in);  // Create a Scanner object
         String userName = myObj.nextLine();
         
 
