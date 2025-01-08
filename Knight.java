@@ -17,7 +17,7 @@ public class Knight {
   
     // getters 
 
-    public getName() {
+    public String getName() {
         return this.name;
     }
     
