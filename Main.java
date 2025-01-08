@@ -36,9 +36,6 @@ public class Main {
 
         menu();
 
-        //Scanner c = new Scanner(System.in);  // Create a Scanner object
-        String userName = options.nextLine();
-
 
 
     }
