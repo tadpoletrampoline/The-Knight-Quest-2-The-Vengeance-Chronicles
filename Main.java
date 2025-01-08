@@ -4,7 +4,10 @@ public class Main {
 static Scanner options = new Scanner(System.in); //player options for the menu
     
 static void menu(){
+    
+    System.out.println("menu ramble... press one to start");
     String menu = options.nextLine();
+        
         switch(menu) {  
             case "P": //starting the game
                 System.out.println("Start game:);
@@ -15,11 +18,9 @@ static void menu(){
         
     public static void main(String[] args) {
 
-        System.out.println("Start");
-
-        Boolean menu = true;
+        /*Boolean menu = true;
         Scanner c = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("menu ramble... press one to start");
+        System.out.println("menu ramble... press one to start");*/
         String userName = myObj.nextLine();
         
 
