@@ -16,6 +16,7 @@ static void menu(){
 
             case "i":
                 instructions();
+                menu();
                 break;
                 
             }
