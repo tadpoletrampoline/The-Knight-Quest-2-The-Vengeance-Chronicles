@@ -10,7 +10,7 @@ static void menu(){
         
         switch(menu) {  
             case "p": //starting the game
-                System.out.println("Start game:);
+                System.out.println("Start game:");
                 //menu = false;
                 break;
 
