@@ -33,7 +33,7 @@ static void menu(){
         menu();
         //Boolean menu = true;
         //Scanner c = new Scanner(System.in);  // Create a Scanner object
-        String userName = myObj.nextLine();
+        String userName = options.nextLine();
         
 
       
