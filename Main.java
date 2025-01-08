@@ -9,12 +9,23 @@ static void menu(){
     String menu = options.nextLine();
         
         switch(menu) {  
-            case "P": //starting the game
+            case "p": //starting the game
                 System.out.println("Start game:);
                 //menu = false;
                 break;
+
+            case "i":
+                instructions();
+                break;
+                
             }
         }
+
+    static void instructions(){
+        System.out.println("these are the very cool instructions");
+        System.out.println("if you want to do this then blah blah blah...");
+        
+    }
         
     public static void main(String[] args) {
 
