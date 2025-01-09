@@ -7,14 +7,14 @@ public class Main {
 
         // variables
         Boolean start = true; // control menu
-        ArrayList<String> items = new ArrayList<Item>(); // Create an ArrayList object of type Item
+        ArrayList<String> items = new ArrayList<String>(); // Create an ArrayList object of type Item
 
         System.out.println("menu ramble... press s to start...press i for intructions");
         String menu = options.nextLine();
 
         switch(menu) {
             case "s": //starting the game
-                System.out.println("Start game:");
+                System.out.println("\nstarting game... ... ... ...\n");
                 start = false;
                 game();
                 break;
@@ -38,7 +38,7 @@ public class Main {
 
     //i'm going to make a class for all this stuff soon
     static void game(){
-        System.out.println("Enter your username: ");
+        System.out.println("Enter your username (default is Lancelot): ");
         String userName = options.nextLine();
     }
 
