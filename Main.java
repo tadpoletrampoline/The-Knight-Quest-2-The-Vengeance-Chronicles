@@ -22,7 +22,10 @@ public class Main {
                 instructions();
                 menu();
                 break;
-
+                
+            case "0": //lets player exit game
+                System.out.println("bye bye");
+                System.exit(0);
         }
     }
 
