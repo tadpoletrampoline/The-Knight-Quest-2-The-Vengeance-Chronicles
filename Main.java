@@ -3,15 +3,15 @@ import java.util.*;
 public class Main {
 
     // variables
-    
-    Boolean start = true; // control menu
-    ArrayList<String> items = new ArrayList<Item>(); // Create an ArrayList object of type Item
+    ArrayList<Item> items = new ArrayList<Item>(); // Create an ArrayList object of type Item
     
     static Scanner options = new Scanner(System.in); //player options for the menu
     
 
     static void menu(){
-
+        
+        Boolean start = true; // control menu
+        
         System.out.println("menu ramble... press s to start...press i for intructions");
         String menu = options.nextLine();
 
