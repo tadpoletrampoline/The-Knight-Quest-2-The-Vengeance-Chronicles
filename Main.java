@@ -16,7 +16,7 @@ public class Main {
             case "s": //starting the game
                 System.out.println("\nstarting game... ... ... ...\n");
                 start = false;
-                game();
+                gameIntro();
                 break;
 
             case "i":
@@ -36,8 +36,8 @@ public class Main {
 
     }
 
-    //i'm going to make a class for all this stuff soon
-    static void game(){
+    //i'm going to make a class for all this stuff soon maybe
+    static void gameIntro(){
         System.out.println("Enter your username (default is Lancelot): ");
         String userName = options.nextLine();
     }
