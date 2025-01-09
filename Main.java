@@ -1,13 +1,16 @@
 import java.util.*;
 
 public class Main {
+
+    // variables
+    
+    Boolean start = true; // control menu
+    ArrayList<String> items = new ArrayList<Item>(); // Create an ArrayList object of type Item
+    
     static Scanner options = new Scanner(System.in); //player options for the menu
+    
 
     static void menu(){
-
-        // variables
-        Boolean start = true; // control menu
-        ArrayList<String> items = new ArrayList<Item>(); // Create an ArrayList object of type Item
 
         System.out.println("menu ramble... press s to start...press i for intructions");
         String menu = options.nextLine();
@@ -36,7 +39,7 @@ public class Main {
 
     }
 
-    //i'm going to make a class for all this stuff soon maybe
+    //i'm going to add all this stuff to a class soon maybe
     static void gameIntro(){
         System.out.println("Enter your username (default is Lancelot): ");
         String userName = options.nextLine();
