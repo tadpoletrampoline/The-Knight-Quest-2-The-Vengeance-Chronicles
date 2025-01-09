@@ -7,7 +7,7 @@ public class Main {
 
         // variables
         Boolean start = true; // control menu
-        ArrayList<String> items = new ArrayList<String>(); // Create an ArrayList object of type Item
+        ArrayList<String> items = new ArrayList<Item>(); // Create an ArrayList object of type Item
 
         System.out.println("menu ramble... press s to start...press i for intructions");
         String menu = options.nextLine();
