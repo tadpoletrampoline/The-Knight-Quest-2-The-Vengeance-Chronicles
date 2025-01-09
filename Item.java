@@ -6,8 +6,13 @@ public class Item {
     private String name; // item name
     private int value; // i knid of forgot what i was going for with this in the uml but i feel like i'll remember eventually
 
-    // constructors (if given name or not)
-
+    // constructor
+    
+    public Item(String type, String name, int value){
+        this.type = type;
+        this.name = name;
+        this.value = value;
+    }
 
   
     // getters 
