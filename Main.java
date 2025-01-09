@@ -16,6 +16,7 @@ public class Main {
             case "s": //starting the game
                 System.out.println("Start game:");
                 start = false;
+                String userName = options.nextLine();
                 break;
 
             case "i":
