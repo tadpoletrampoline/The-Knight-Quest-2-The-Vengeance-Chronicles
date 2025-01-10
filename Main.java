@@ -8,7 +8,7 @@ public class Main {
     //setting up the game
     int score = 0;
     boolean hasItem = false;
-    int location = 1; // signifies location/level
+    int location = 1; // signifies location/level (we could use a while loop or something)
 
     Scanner controls = new Scanner(System.in); //let's user input their actions
     
