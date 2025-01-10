@@ -8,7 +8,7 @@ public class Main {
     //setting up the game
     int score = 0;
     boolean hasItem = false;
-    int location = 1; // signifies location
+    int location = 1; // signifies location/level
 
     Scanner controls = new Scanner(System.in); //let's user input their actions
     
@@ -27,6 +27,7 @@ public class Main {
                 System.out.println("\nstarting game... ... ... ...\n");
                 start = false;
                 gameIntro();
+                loadLevel();
                 break;
 
             case "i":
@@ -55,6 +56,7 @@ public class Main {
     static void loadLevel(){
 
         System.out.println("working yay");
+        levelOne();
     }
 
     static void levelOne(){
@@ -63,6 +65,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // let's player start the game
         menu();
 
 
