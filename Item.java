@@ -25,7 +25,7 @@ public class Item {
         return this.name;
     }
 
-    public Int getValue(){
+    public int getValue(){
         return this.value;
     }
     
