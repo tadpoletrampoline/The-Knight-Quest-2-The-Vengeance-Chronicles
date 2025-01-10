@@ -27,7 +27,7 @@ public class Main {
                 System.out.println("\nstarting game... ... ... ...\n");
                 start = false;
                 gameIntro();
-                loadLevel();
+                loadLevel(1);
                 break;
 
             case "i":
@@ -53,10 +53,13 @@ public class Main {
         String userName = options.nextLine();
     }
 
-    static void loadLevel(){
+    static void loadLevel(int num){
 
+        if (num == 1) {
         System.out.println("working yay");
         levelOne();
+        }
+        
     }
 
     static void levelOne(){
