@@ -65,7 +65,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // let's player start the game
+        // lets player start the game
         menu();
 
 
