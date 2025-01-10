@@ -4,6 +4,13 @@ public class Main {
 
     // variables
     ArrayList<Item> items = new ArrayList<Item>(); // Create an ArrayList object of type Item
+
+    //setting up the game
+    int score = 0;
+    boolean hasItem = false;
+    int location = 1; // signifies location
+
+    Scanner controls = new Scanner(System.in); //let's user input their actions
     
     static Scanner options = new Scanner(System.in); //player options for the menu
     
@@ -45,16 +52,17 @@ public class Main {
         String userName = options.nextLine();
     }
 
+    static void loadLevel(){
+
+        System.out.println("working yay");
+    }
+
+    static void levelOne(){
+        System.out.println("this is level one");
+    }
 
     public static void main(String[] args) {
 
-        //setting up the game (i might move this out of this method)
-        int score = 0;
-        boolean hasItem = false;
-        int location = 1; // signifies location
-
-        Scanner controls = new Scanner(System.in); //let's user input their actions
-        
         menu();
 
 
