@@ -48,6 +48,13 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //setting up the game (i might move this out of this method)
+        int score = 0;
+        boolean hasItem = false;
+        int location = 1; // signifies location
+
+        Scanner controls = new Scanner(System.in); //let's user input their actions
+        
         menu();
 
 
