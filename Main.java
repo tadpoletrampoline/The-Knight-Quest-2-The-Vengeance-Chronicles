@@ -38,6 +38,10 @@ public class Main {
             case "0": //lets player exit game
                 System.out.println("bye bye");
                 System.exit(0);
+
+            default: 
+                System.out.println("how dare you, please type in one of the proper options");
+                break;
         }
     }
 
