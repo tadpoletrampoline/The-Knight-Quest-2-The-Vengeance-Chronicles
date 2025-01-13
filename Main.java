@@ -54,18 +54,18 @@ public class Main {
         char Move;
         boolean Running = true;
         Scanner input = new Scanner(System.in);
-        /*Random random = new Random();
-        System.out.println("Please Enter The Number Of Row:");
-        Row = input.nextInt();
-        System.out.println("Please Enter The Number Of Columns:");
-        Col = input.nextInt();*/
         int Array[][] = new int [size][size];
-        //Num1 = random.nextInt(Row) + 1;
-        //Num2 = random.nextInt(Col) + 1;
+                    
         for(int i=0;i<size;i++) {
             for(int x=0;x<size;x++) {
                 Array[i][x] = 0;
                 Array[p1][p2] = 1;
+                
+                // creates patterns of making values 2 as borders
+                if (((x+i)^5)/2 == 0 && x<size-1 && i<size-1) {
+                    Array[i][x] = 2;
+                    Array[p1][p2] = 1;
+                }
             }
         }
         for(int i=0;i<size;i++) {
@@ -74,6 +74,8 @@ public class Main {
             }
             System.out.println();
         }
+        
+                    
         while(Running) {
             Move = input.next().charAt(0);
             switch(Move) {
