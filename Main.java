@@ -14,7 +14,7 @@ public class Main {
     
     static Scanner options = new Scanner(System.in); //player options for the menu
     
-static void menu(){
+    static void menu(){
         
         Boolean start = true; // control menu
         
@@ -41,6 +41,7 @@ static void menu(){
 
             default: 
                 System.out.println("how dare you, please type in one of the proper options");
+                menu(); // recursion!!!
                 break;
         }
     }
@@ -79,7 +80,7 @@ static void menu(){
             case 's':
             case 'S':
                 
-                if (p1 < size-1) {
+                if (p1 < size-1) { //prevents out of bounds
                     Array[p1][p2] = 0;
                     Array[p1+=1][p2] = 1;
                     break;
@@ -90,25 +91,45 @@ static void menu(){
                 
             case 'w':
             case 'W':
-                Array[p1][p2] = 0;
-                Array[p1-=1][p2] = 1;
-                break;
+                
+                if (p1 > 0) { //prevents out of bounds
+                    Array[p1][p2] = 0;
+                    Array[p1-=1][p2] = 1;
+                    break;
+                } else {
+                    System.out.println("Your path here is blocked, try another way.");
+                    break;
+                }
             case 'e':
             case 'E':
+                
+            if (p2 < size-1) {   
                 Array[p1][p2] = 0;
                 Array[p1][p2+=1] = 1;
                 break;
+            } else {
+                    System.out.println("Your path here is blocked, try another way.");
+                    break;
+                }
+                
             case 'n':
             case 'N':
+            
+            if (p2 > 0) { 
                 Array[p1][p2] = 0;
                 Array[p1][p2-=1] = 1;
-            break;
+                break;
+            } else {
+                    System.out.println("Your path here is blocked, try another way.");
+                    break;
+                }
+            
             case 'l':
             case 'L':
                 Running = false;
                 input.close();
                 break;
-                default:
+            default:
                 System.out.println("I don't understand that.");
                 break;
         }
