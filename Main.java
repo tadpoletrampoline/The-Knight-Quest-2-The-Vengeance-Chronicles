@@ -44,7 +44,7 @@ static void menu(){
                 break;
         }
     }
-
+    //mapping
     static void Map(int size) {
         int Row,Col,Num1,Num2;
         int p1 = 0;
@@ -116,7 +116,7 @@ static void menu(){
         {
         System.out.print(Array[i][x] + "\t");
         }
-        System.out.println();
+        System.out.println(); // temporary printing of map for debugging
                 }
             }
     }
