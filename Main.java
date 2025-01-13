@@ -14,8 +14,7 @@ public class Main {
     
     static Scanner options = new Scanner(System.in); //player options for the menu
     
-
-    static void menu(){
+static void menu(){
         
         Boolean start = true; // control menu
         
@@ -28,6 +27,7 @@ public class Main {
                 start = false;
                 gameIntro();
                 loadLevel(1);
+                Map(5);
                 break;
 
             case "i":
@@ -45,7 +45,83 @@ public class Main {
         }
     }
 
-    static void instructions(){
+    static void Map(int size) {
+        int Row,Col,Num1,Num2;
+        int p1 = 0;
+        int p2 = 0;
+        char Move;
+        boolean Running = true;
+        Scanner input = new Scanner(System.in);
+        /*Random random = new Random();
+        System.out.println("Please Enter The Number Of Row:");
+        Row = input.nextInt();
+        System.out.println("Please Enter The Number Of Columns:");
+        Col = input.nextInt();*/
+        int Array[][] = new int [size][size];
+        //Num1 = random.nextInt(Row) + 1;
+        //Num2 = random.nextInt(Col) + 1;
+        for(int i=0;i<size;i++)
+        {
+        for(int x=0;x<size;x++)
+        {
+        Array[i][x] = 0;
+        Array[p1][p2] = 1;
+        }
+        }
+        for(int i=0;i<size;i++)
+        {
+        for(int x=0;x<size;x++)
+        {
+        System.out.print(Array[i][x] + "\t");
+        }
+        System.out.println();
+        }
+        while(Running)
+        {
+        Move = input.next().charAt(0);
+        switch(Move)
+        {
+        case 'w':
+        case 'W':
+        Array[p1][p2] = 0;
+        Array[p1+=1][p2] = 1;
+        break;
+        case 's':
+        case 'S':
+        Array[p1][p2] = 0;
+        Array[p1-=1][p2] = 1;
+        break;
+        case 'd':
+        case 'D':
+        Array[p1][p2] = 0;
+        Array[p1][p2+=1] = 1;
+        break;
+        case 'a':
+        case 'A':
+        Array[p1][p2] = 0;
+        Array[p1][p2-=1] = 1;
+        break;
+        case 'l':
+        case 'L':
+        Running = false;
+        input.close();
+        break;
+        default:
+        System.out.println("Please Press Proper Keys!");
+        break;
+        }
+        for(int i=0;i<size;i++)
+        {
+        for(int x=0;x<size;x++)
+        {
+        System.out.print(Array[i][x] + "\t");
+        }
+        System.out.println();
+                }
+            }
+    }
+
+static void instructions(){
         System.out.println("these are the very cool instructions");
         System.out.println("if you want to do this then blah blah blah...");
 
@@ -56,6 +132,7 @@ public class Main {
         System.out.println("Enter your username (default is Lancelot): ");
         String userName = options.nextLine();
     }
+
 
     static void loadLevel(int num){
 
