@@ -44,6 +44,7 @@ static void menu(){
                 break;
         }
     }
+
     //mapping
     static void Map(int size) {
         int Row,Col,Num1,Num2;
@@ -60,63 +61,62 @@ static void menu(){
         int Array[][] = new int [size][size];
         //Num1 = random.nextInt(Row) + 1;
         //Num2 = random.nextInt(Col) + 1;
-        for(int i=0;i<size;i++)
-        {
-        for(int x=0;x<size;x++)
-        {
-        Array[i][x] = 0;
-        Array[p1][p2] = 1;
+        for(int i=0;i<size;i++) {
+            for(int x=0;x<size;x++) {
+                Array[i][x] = 0;
+                Array[p1][p2] = 1;
+            }
         }
+        for(int i=0;i<size;i++) {
+            for(int x=0;x<size;x++) {
+                System.out.print(Array[i][x] + "\t");
+            }
+            System.out.println();
         }
-        for(int i=0;i<size;i++)
-        {
-        for(int x=0;x<size;x++)
-        {
-        System.out.print(Array[i][x] + "\t");
+        while(Running) {
+            Move = input.next().charAt(0);
+            switch(Move) {
+            case 's':
+            case 'S':
+                
+                if (p1 < size-1) {
+                    Array[p1][p2] = 0;
+                    Array[p1+=1][p2] = 1;
+                    break;
+                } else {
+                    System.out.println("Your path here is blocked, try another way.");
+                    break;
+                }
+                
+            case 'w':
+            case 'W':
+                Array[p1][p2] = 0;
+                Array[p1-=1][p2] = 1;
+                break;
+            case 'e':
+            case 'E':
+                Array[p1][p2] = 0;
+                Array[p1][p2+=1] = 1;
+                break;
+            case 'n':
+            case 'N':
+                Array[p1][p2] = 0;
+                Array[p1][p2-=1] = 1;
+            break;
+            case 'l':
+            case 'L':
+                Running = false;
+                input.close();
+                break;
+                default:
+                System.out.println("I don't understand that.");
+                break;
         }
-        System.out.println();
+        for(int i=0;i<size;i++) {
+            for(int x=0;x<size;x++) {
+                System.out.print(Array[i][x] + "\t");
         }
-        while(Running)
-        {
-        Move = input.next().charAt(0);
-        switch(Move)
-        {
-        case 'w':
-        case 'W':
-        Array[p1][p2] = 0;
-        Array[p1+=1][p2] = 1;
-        break;
-        case 's':
-        case 'S':
-        Array[p1][p2] = 0;
-        Array[p1-=1][p2] = 1;
-        break;
-        case 'd':
-        case 'D':
-        Array[p1][p2] = 0;
-        Array[p1][p2+=1] = 1;
-        break;
-        case 'a':
-        case 'A':
-        Array[p1][p2] = 0;
-        Array[p1][p2-=1] = 1;
-        break;
-        case 'l':
-        case 'L':
-        Running = false;
-        input.close();
-        break;
-        default:
-        System.out.println("Please Press Proper Keys!");
-        break;
-        }
-        for(int i=0;i<size;i++)
-        {
-        for(int x=0;x<size;x++)
-        {
-        System.out.print(Array[i][x] + "\t");
-        }
-        System.out.println(); // temporary printing of map for debugging
+            System.out.println(); // temporary printing of map for debugging
                 }
             }
     }
