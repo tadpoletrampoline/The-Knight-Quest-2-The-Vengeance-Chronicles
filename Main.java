@@ -82,7 +82,7 @@ public class Main {
             case 's':
             case 'S':
                 
-                if (p1 < size-1) { //prevents out of bounds
+                if (p1 < size-1 && Array[p1+1][p2] != 2) { //prevents out of bounds
                     Array[p1][p2] = 0;
                     Array[p1+=1][p2] = 1;
                     break;
@@ -91,10 +91,10 @@ public class Main {
                     break;
                 }
                 
-            case 'w':
-            case 'W':
+            case 'n':
+            case 'N':
                 
-                if (p1 > 0) { //prevents out of bounds
+                if (p1 > 0 && Array[p1-1][p2] != 2) { //prevents out of bounds
                     Array[p1][p2] = 0;
                     Array[p1-=1][p2] = 1;
                     break;
@@ -105,7 +105,7 @@ public class Main {
             case 'e':
             case 'E':
                 
-            if (p2 < size-1) {   
+            if (p2 < size-1 && Array[p1][p2+1] != 2) {   
                 Array[p1][p2] = 0;
                 Array[p1][p2+=1] = 1;
                 break;
@@ -114,10 +114,10 @@ public class Main {
                     break;
                 }
                 
-            case 'n':
-            case 'N':
+            case 'w':
+            case 'W':
             
-            if (p2 > 0) { 
+            if (p2 > 0 && Array[p1][p2-1] != 2) { 
                 Array[p1][p2] = 0;
                 Array[p1][p2-=1] = 1;
                 break;
