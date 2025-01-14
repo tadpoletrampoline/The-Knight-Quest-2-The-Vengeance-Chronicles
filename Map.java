@@ -23,8 +23,8 @@ import java.util.*;
                 this.Array[i][x] = 0;
                 this.Array[p1][p2] = 1;
                 
-                // creates patterns of making values 2 as borders
-                if (((x+i)^5)/2 == 0 && x<size-1 && i<size-1) {
+                // creates patterns of making values 2 as borders * will edit later to be a complex path
+                if (((x+i)^5)/2 == 0 && x<size-1 && i<size-1  && i<size-1 && x>0 && i>0) {
                     this.Array[i][x] = 2;
                     this.Array[this.p1][this.p2] = 1;
                 }
