@@ -155,7 +155,8 @@ static void instructions(){
         System.out.println("Enter your username (default is Lancelot): ");
 
         String username = options.nextLine();
-        Knight person = new Knight(userName)                  /// knight object created!!
+        Knight person = new Knight(username);                  /// knight object created!!
+        // System.out.println(person.getName()); // testing if name works
         
     }
 
