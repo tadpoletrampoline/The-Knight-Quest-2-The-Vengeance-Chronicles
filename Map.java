@@ -12,7 +12,7 @@ import java.util.*;
         private char Move;
         private boolean Running = true;
         int Array[][];
-        private int size = 7;
+        private int size = 6; // map size hard coded (change maybe later)
         
         public Map() {
         
