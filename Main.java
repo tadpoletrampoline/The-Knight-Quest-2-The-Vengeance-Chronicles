@@ -153,7 +153,10 @@ static void instructions(){
     //i'm going to add all this stuff to a class soon maybe
     static void gameIntro(){
         System.out.println("Enter your username (default is Lancelot): ");
-        String userName = options.nextLine();
+
+        String username = options.nextLine();
+        Knight person = new Knight(userName)                  /// knight object created!!
+        
     }
 
 
