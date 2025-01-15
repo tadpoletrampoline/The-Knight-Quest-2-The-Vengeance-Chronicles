@@ -82,8 +82,8 @@ import java.util.*;
                     break;
                 }
                 
-            case 'w':
-            case 'W':
+            case 'we':
+            case 'We':
             
             if (p2 > 0 && Array[p1][p2-1] != 2) { 
                 Array[p1][p2] = 0;
