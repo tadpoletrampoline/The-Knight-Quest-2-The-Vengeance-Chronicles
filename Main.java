@@ -26,10 +26,9 @@ public class Main {
                 System.out.println("\nstarting game... ... ... ...\n");
                 start = false;
                 gameIntro();
-                loadLevel(1);
                 
                 
-                Map landscape = new Map(); // initializing map object!!!
+                Map landscape = new Map(1); // initializing map object!!!
                 landscape.move(); 
                 break;
 
@@ -62,16 +61,6 @@ static void instructions(){
         String username = options.nextLine();
         Knight person = new Knight(username);                  /// knight object created!!
         // System.out.println(person.getName()); // testing if name works
-    }
-
-
-    static void loadLevel(int num){
-
-        if (num == 1) {
-        System.out.println("working yay");
-        levelOne();
-        }
-        
     }
 
     static void levelOne(){
