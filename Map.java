@@ -44,7 +44,7 @@ import java.util.*;
         while(Running) {
             
             Scanner input = new Scanner(System.in);
-            this.Move = input.next().charAt(0);
+            this.Move = input.next().charAt(0,2);
             
             switch(Move) {
             case 'so':
