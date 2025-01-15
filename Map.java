@@ -14,12 +14,24 @@ import java.util.*;
         int Array[][];
         private int size = 7; // map size hard coded (change maybe later) 
         private int level; 
+        String key; // key name, not object (in item class)
         
+        // constructor !!!
         public Map(int level) {
         
         this.level = level;
         this.Array = new int [this.size][this.size];
-                    
+        
+        // assigning key names per level
+        if (this.level == 1) {
+            key = "key";
+        } else if (this.level == 2) {
+            key = "axe";
+        } else if (level == 3) {
+            key = "magic wand";
+        }
+        
+        // create grid             
         for(int i=0;i<size;i++) {
             for(int x=0;x<size;x++) {
                 this.Array[i][x] = 0;
@@ -32,9 +44,14 @@ import java.util.*;
                         this.Array[this.p1][this.p2] = 1;
                     }
                 }
+                
+                // adds the key in a random spot on the map
+                //this.Array[p1][p2] = (Math.random() * 7.00); //hard coded random range
 
             }
         }
+        
+        // print grid for debugging purposed
         for(int i=0;i<size;i++) {
             for(int x=0;x<size;x++) {
                 System.out.print(this.Array[i][x] + "\t");
@@ -123,5 +140,6 @@ import java.util.*;
       // getters
 
       // setters
+      
     }
     
