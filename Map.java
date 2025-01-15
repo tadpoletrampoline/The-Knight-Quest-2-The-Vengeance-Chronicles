@@ -47,8 +47,8 @@ import java.util.*;
             this.Move = input.next().charAt(0);
             
             switch(Move) {
-            case 's':
-            case 'S':
+            case 'so':
+            case 'So':
                 
             if (p1 < size-1 && Array[p1+1][p2] != 2) { //prevents out of bounds
                 Array[p1][p2] = 0;
@@ -59,8 +59,8 @@ import java.util.*;
                 break;
                 }
                 
-            case 'n':
-            case 'N':
+            case 'no':
+            case 'No':
                 
                 if (p1 > 0 && Array[p1-1][p2] != 2) { //prevents out of bounds
                     Array[p1][p2] = 0;
@@ -70,8 +70,8 @@ import java.util.*;
                     System.out.println("Your path here is blocked, try another way.");
                     break;
                 }
-            case 'e':
-            case 'E':
+            case 'ea':
+            case 'Ea':
                 
             if (p2 < size-1 && Array[p1][p2+1] != 2) {   
                 Array[p1][p2] = 0;
