@@ -9,13 +9,15 @@ import java.util.*;
         // delete private int Row,Col,Num1,Num2;
         private int p1 = 0;
         private int p2 = 0;
-        private char Move;
+        private String Move;
         private boolean Running = true;
         int Array[][];
-        private int size = 6; // map size hard coded (change maybe later)
+        private int size = 7; // map size hard coded (change maybe later) 
+        private int level; 
         
-        public Map() {
+        public Map(int level) {
         
+        this.level = level;
         this.Array = new int [this.size][this.size];
                     
         for(int i=0;i<size;i++) {
@@ -24,10 +26,13 @@ import java.util.*;
                 this.Array[p1][p2] = 1;
                 
                 // creates patterns of making values 2 as borders * will edit later to be a complex path
-                if (((x+i)^5)/2 == 0 && x<size-1 && i<size-1  && i<size-1 && x>0 && i>0) {
-                    this.Array[i][x] = 2;
-                    this.Array[this.p1][this.p2] = 1;
+                if( level == 1) {
+                    if (((x+i)^5)/2 == 0 && x<size-1 && i<size-1  && i<size-1 && x>0 && i>0) {
+                        this.Array[i][x] = 2;
+                        this.Array[this.p1][this.p2] = 1;
+                    }
                 }
+
             }
         }
         for(int i=0;i<size;i++) {
@@ -44,11 +49,11 @@ import java.util.*;
         while(Running) {
             
             Scanner input = new Scanner(System.in);
-            this.Move = input.next().charAt(0,2);
+            this.Move = input.next(). substring(0,2);
             
             switch(Move) {
-            case 'so':
-            case 'So':
+            case "so":
+            case "So":
                 
             if (p1 < size-1 && Array[p1+1][p2] != 2) { //prevents out of bounds
                 Array[p1][p2] = 0;
@@ -59,8 +64,8 @@ import java.util.*;
                 break;
                 }
                 
-            case 'no':
-            case 'No':
+            case "no":
+            case "No":
                 
                 if (p1 > 0 && Array[p1-1][p2] != 2) { //prevents out of bounds
                     Array[p1][p2] = 0;
@@ -70,8 +75,8 @@ import java.util.*;
                     System.out.println("Your path here is blocked, try another way.");
                     break;
                 }
-            case 'ea':
-            case 'Ea':
+            case "ea":
+            case "Ea":
                 
             if (p2 < size-1 && Array[p1][p2+1] != 2) {   
                 Array[p1][p2] = 0;
@@ -82,8 +87,8 @@ import java.util.*;
                     break;
                 }
                 
-            case 'we':
-            case 'We':
+            case "we":
+            case "We":
             
             if (p2 > 0 && Array[p1][p2-1] != 2) { 
                 Array[p1][p2] = 0;
@@ -94,8 +99,9 @@ import java.util.*;
                     break;
                 }
             
-            case 'l':
-            case 'L':
+            case "le":
+            case "Le":
+                System.out.println("You have exited the game...");
                 Running = false;
                 input.close();
                 break;
