@@ -9,8 +9,6 @@ public class Main {
     int score = 0;
     boolean hasItem = false;
     int location = 1; // signifies location/level (we could use a while loop or something)
-
-    Scanner controls = new Scanner(System.in); //let's user input their actions
     
     static Scanner options = new Scanner(System.in); //player options for the menu
     
