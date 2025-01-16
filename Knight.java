@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Knight {
 
     // instance variables (knight features)
@@ -7,12 +9,14 @@ public class Knight {
     // constructors (if given name or not)
 
     public Knight(String name) {
-        this.name = name;
+        
+        if (name.equals("")) {
+            this.name = "Lancelot";
+        } else {
+            this.name = name;
+        }
+        
         this.score = 0;
-    }
-
-     public Knight(String " ") {
-        this.name = "Lancelot";
     }
   
     // getters 
@@ -23,13 +27,13 @@ public class Knight {
     
     // setters
 
-    public int increaseScore(int num) {
+    public void increaseScore(int num) {
         
         this.score += num;
     
     } // increase score easily
 
-    public int decreaseScore(int num) {
+    public void decreaseScore(int num) {
 
         this.score -= num;
         
