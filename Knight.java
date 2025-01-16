@@ -11,7 +11,7 @@ public class Knight {
         this.score = 0;
     }
 
-     public Knight() {
+     public Knight(String " ") {
         this.name = "Lancelot";
     }
   
