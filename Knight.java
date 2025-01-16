@@ -26,7 +26,7 @@ public class Knight {
     public int increaseScore(int num) {
 
         this.score += num;
-    } // increase score efficiently
+    } // increase score easily
 
     public int decreaseScore(int num) {
 
