@@ -1,4 +1,4 @@
-public class Solution extens Item {
+public class Solution extends Item {
 
     // instance variables (item features)
 
