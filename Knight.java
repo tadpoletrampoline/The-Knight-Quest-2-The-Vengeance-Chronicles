@@ -24,12 +24,15 @@ public class Knight {
     // setters
 
     public int increaseScore(int num) {
-
+        
         this.score += num;
+    
     } // increase score easily
 
     public int decreaseScore(int num) {
 
         this.score -= num;
+        
     } // decrease score easily
+
 }
