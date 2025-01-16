@@ -1,14 +1,14 @@
 public class Knight {
 
-    private String name;
-    
     // instance variables (knight features)
-
+    private String name;
+    private int score;
 
     // constructors (if given name or not)
 
     public Knight(String name) {
         this.name = name;
+        this.score = 0;
     }
 
      public Knight() {
@@ -22,4 +22,14 @@ public class Knight {
     }
     
     // setters
+
+    public int increaseScore(int num) {
+
+        this.score += num;
+    } // increase score efficiently
+
+    public int decreaseScore(int num) {
+
+        this.score -= num;
+    } // decrease score easily
 }
