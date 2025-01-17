@@ -11,7 +11,7 @@ public class Knight {
 
     public Knight(String name) {
         
-        if (name.equals("")) {
+        if (name.length() < 1) {
             this.name = "Lancelot";
         } else {
             this.name = name;
