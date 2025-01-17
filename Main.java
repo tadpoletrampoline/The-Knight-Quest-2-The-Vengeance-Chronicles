@@ -65,6 +65,9 @@ static void instructions(){
         System.out.println("this is level one");
     }
 
+    // Methods for cutscene
+    //static void cutsene1() {}
+
     public static void main(String[] args) {
 
         // lets player start the game
