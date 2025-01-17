@@ -66,7 +66,7 @@ static void instructions(){
     }
 
     // Methods for cutscene
-    //static void cutsene1() {}
+    //static void cutsene1() {System.out.println("hi)};
 
     public static void main(String[] args) {
 
