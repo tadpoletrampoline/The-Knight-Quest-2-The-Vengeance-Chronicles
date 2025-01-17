@@ -9,7 +9,7 @@ public class Knight {
 
     // constructors (if given name or not)
 
-    public Knight(String name, int health) {
+    public Knight(String name) {
         
         if (name.equals("")) {
             this.name = "Lancelot";
@@ -17,18 +17,20 @@ public class Knight {
             this.name = name;
         }
 
-        this.health = health; // change health level of player depending on level to increase difficulty
+        this.health = 0; // health level of player which can be changed
         this.score = 0;
     }
   
     // getters 
-
     public String getName() {
         return this.name;
+    } 
+
+    public int getHealth() {
+        return this.health;
     }
     
     // setters
-
     public void increaseScore(int num) {
         
         this.score += num;
@@ -40,5 +42,17 @@ public class Knight {
         this.score -= num;
         
     } // decrease score easily
+
+    public void increaseHealth(int num) {
+        
+        this.health += num;
+    
+    } // increase health easily
+
+    public void decreaseHealth(int num) {
+
+        this.health -= num;
+        
+    } // decrease health easily
 
 }
