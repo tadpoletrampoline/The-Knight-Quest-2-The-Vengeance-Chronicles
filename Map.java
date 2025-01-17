@@ -1,6 +1,5 @@
 import java.util.*;
 import java.io;
-import java.random;
 
 // class to create mapping gample including movement and inserting puzzles
     
