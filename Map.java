@@ -24,18 +24,20 @@ import java.io;
         this.level = level;
         this.Array = new int [this.size][this.size];
         
-        //making the keys
+        //making the keys and assigning key names per level
+        
         Solution puzzleKey = new Solution();
         
-        // assigning key names per level
         if (this.level == 1) {
-            puzzleKey.setType ("key");
+            puzzleKey.setName ("key");
+            puzzleKey.setType("key");
+
             
         } else if (this.level == 2) {
-            puzzleKey.setType ("axe");
+            puzzleKey.setName ("axe");
             
         } else if (level == 3) {
-            puzzleKey.setType("magic wand");
+            puzzleKey.setName("magic wand");
         }
             
         // create grid             
