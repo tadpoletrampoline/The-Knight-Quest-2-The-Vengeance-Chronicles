@@ -76,9 +76,11 @@ public class Map {
     // method to start the next round
     public void nextLevel() {
 
-        if (level < 3) {
-            level++;
-            Map landscape = new Map(level); // start new level
+        if (this.level < 3) {
+            new MyFrame(this.level);
+            this.level++;
+            System.out.println("Level " + this.level);
+            Map landscape = new Map(this.level); // start new level
             landscape.move();
         } else {
             System.out.println("This is where we start boss level");
@@ -195,6 +197,9 @@ public class Map {
 
     // getters
 
+    public int getLevel() {
+        return this.level;
+    }
     // setters
 
 }
