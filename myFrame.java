@@ -2,11 +2,13 @@ import javax.swing.*;
 
 public class MyFrame extends JFrame{
 
+    private int level;
     MyPanel panel;
 
-    MyFrame(){
+    public MyFrame(int level){
 
-        panel = new MyPanel();
+        this.level = level;
+        panel = new MyPanel(level);
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
