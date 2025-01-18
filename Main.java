@@ -72,7 +72,7 @@ static void instructions(){
 
         // lets player start the game
         menu();
-
+        // new myFrame();
 
 
     }
