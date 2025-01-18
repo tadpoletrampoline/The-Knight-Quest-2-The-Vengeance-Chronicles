@@ -8,9 +8,6 @@ public class Knight {
     private int score;
     private int health; 
     
-    // Create an ArrayList object of type Item
-    ArrayList<Item> inventory = new ArrayList<Item>(); 
-
     // constructors (if given name or not)
 
     public Knight(String name) {
@@ -23,8 +20,7 @@ public class Knight {
 
         this.health = 0; // health level of player which can be changed
         this.score = 0;
-        
-        this.inventory = new ArrayList<>();
+
     }
   
     // getters 
@@ -61,30 +57,4 @@ public class Knight {
         
     } // decrease health easily
     
-    // picking up items
-    public void pickUpItem(Item item) {
-        
-        if (!item.isPickedUp()) {
-            item.pickUp();
-            inventory.add(item);
-            System.out.println(name + " picked up " + item.getName() + "!");
-        } 
-        
-        else {
-            System.out.println(item.getName() + " has already been picked up.");
-        }
-    }
-    
-    // showing the player's inventory
-    public void showInventory() {
-        if (inventory.isEmpty()) {
-            System.out.println("Your inventory is empty.");
-        } else {
-            System.out.println("Inventory: ");
-            for (Item item : inventory) {
-                System.out.println("- " + item.getName());
-            }
-        }
-    }
-
 }
