@@ -75,7 +75,13 @@ import java.io;
         while(Running) {
             
             Scanner input = new Scanner(System.in);
-            this.Move = input.next(). substring(0,2);
+            
+            try { // error handling for single letter prompts
+                this.Move = input.next().substring(0,2); // taking in prompts
+            } catch (StringIndexOutOfBoundsException e) {
+                System.out.println("Please give a valid prompt (longer than one letter)");
+                this.Move = input.next().substring(0,2);
+            }
             
             switch(Move) {
             case "so":
