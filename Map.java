@@ -53,8 +53,7 @@ import java.io;
                 }
                 
                 // adds the key in a random spot on the map
-                //this.Array[p1][p2] = rand.NextInt(7);
-                //(Math.random() * 7.00); //(changed this to randint) hard coded random range
+                //this.Array[p1][p2] = (Math.random() * 7.00); //hard coded random range
 
             }
         }
