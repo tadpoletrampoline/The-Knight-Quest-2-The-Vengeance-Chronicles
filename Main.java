@@ -54,11 +54,6 @@ public class Main{
         // System.out.println(person.getName()); // testing if name works
     }
 
-    static void levelOne(){
-        System.out.println("this is level one");
-    }
-
-
     public static void main(String[] args) {
 
         // variables
