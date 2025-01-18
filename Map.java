@@ -197,6 +197,10 @@ import java.io.*;
 
       // getters
 
+        public int getLevel() {
+            return this.level 
+            }
+        
       // setters
       
     }
