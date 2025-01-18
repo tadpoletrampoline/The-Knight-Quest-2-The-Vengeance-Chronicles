@@ -30,5 +30,7 @@ public class Item {
     }
     
     // setters
-    
+    public void setType(String t) {
+		type = t;
+	}
 }
