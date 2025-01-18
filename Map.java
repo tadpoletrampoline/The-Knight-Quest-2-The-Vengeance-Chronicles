@@ -15,7 +15,8 @@ import java.io;
         int Array[][];
         private int size = 7; // map size hard coded (change maybe later) 
         private int level; 
-        String key; // key name, not object (in item class)
+        //String key; // key name, not object (in item class)
+        Solution puzzleKey = new Key(); //making the keys
         
         // constructor !!!
         public Map(int level) {
@@ -23,15 +24,20 @@ import java.io;
         this.level = level;
         this.Array = new int [this.size][this.size];
         
+        //making the keys
+        Solution puzzleKey = new Key();
+        
         // assigning key names per level
         if (this.level == 1) {
-            key = "key";
+            puzzleKey.setType = "key";
+            
         } else if (this.level == 2) {
-            key = "axe";
+            puzzleKey.setType = "axe";
+            
         } else if (level == 3) {
-            key = "magic wand";
+            puzzleKey.setType = "magic wand";
         }
-        
+            
         // create grid             
         for(int i=0;i<size;i++) {
             for(int x=0;x<size;x++) {
