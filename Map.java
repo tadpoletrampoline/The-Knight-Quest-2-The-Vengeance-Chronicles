@@ -1,5 +1,5 @@
 import java.util.*;
-import java.io;
+import java.io.*;
 
 // class to create mapping gample including movement and inserting puzzles
     
@@ -16,13 +16,16 @@ import java.io;
         private int size = 7; // map size hard coded (change maybe later) 
         private int level; 
         //String key; // key name, not object (in item class)
-        Solution puzzleKey = new Key(); //making the keys
+        
+        ArrayList<Item> inventory = new ArrayList<Item>(); // Create an ArrayList object of type Item
         
         // constructor !!!
         public Map(int level) {
         
         this.level = level;
         this.Array = new int [this.size][this.size];
+        
+        this.inventory = new ArrayList<>();
         
         //making the keys and assigning key names per level
         
@@ -70,11 +73,44 @@ import java.io;
         
         }
         
+    //Knight k = new Knight();
+    
+        // picking up items
+    public void pickUpItem(Item item) {
+        
+        if (!item.isPickedUp()) {
+            item.pickUp();
+            inventory.add(item);
+            System.out.println(" You picked up " + item.getName() + "!");
+        } 
+        
+        else {
+            System.out.println(item.getName() + " has already been picked up.");
+        }
+    }
+    
+    // showing the player's inventory
+    public void showInventory() {
+        if (inventory.isEmpty()) {
+            System.out.println("Your inventory is empty.");
+        } else {
+            System.out.println("Inventory: ");
+            for (Item item : inventory) {
+                System.out.println("- " + item.getName());
+            }
+        }
+    }
+        
     public void move() {
+
+        
+        Item item = new Item();
         
         while(Running) {
+
             
             Scanner input = new Scanner(System.in);
+            this.Move = input.next(). substring(0,2);
             
             try { // error handling for single letter prompts
                 this.Move = input.next().substring(0,2); // taking in prompts
@@ -82,6 +118,7 @@ import java.io;
                 System.out.println("Please give a valid prompt (longer than one letter)");
                 this.Move = input.next().substring(0,2);
             }
+
             
             switch(Move) {
             case "so":
@@ -90,6 +127,7 @@ import java.io;
             if (p1 < size-1 && Array[p1+1][p2] != 2) { //prevents out of bounds
                 Array[p1][p2] = 0;
                 Array[p1+=1][p2] = 1;
+                pickUpItem(item);
                 break;
             } else {
                 System.out.println("Your path here is blocked, try another way.");
@@ -102,6 +140,7 @@ import java.io;
                 if (p1 > 0 && Array[p1-1][p2] != 2) { //prevents out of bounds
                     Array[p1][p2] = 0;
                     Array[p1-=1][p2] = 1;
+                    pickUpItem(item);
                     break;
                 } else {
                     System.out.println("Your path here is blocked, try another way.");
@@ -113,6 +152,7 @@ import java.io;
             if (p2 < size-1 && Array[p1][p2+1] != 2) {   
                 Array[p1][p2] = 0;
                 Array[p1][p2+=1] = 1;
+                pickUpItem(item);
                 break;
             } else {
                     System.out.println("Your path here is blocked, try another way.");
@@ -125,6 +165,7 @@ import java.io;
             if (p2 > 0 && Array[p1][p2-1] != 2) { 
                 Array[p1][p2] = 0;
                 Array[p1][p2-=1] = 1;
+                pickUpItem(item);
                 break;
             } else {
                     System.out.println("Your path here is blocked, try another way.");
@@ -151,6 +192,8 @@ import java.io;
             }
             
         }
+        
+
 
       // getters
 
