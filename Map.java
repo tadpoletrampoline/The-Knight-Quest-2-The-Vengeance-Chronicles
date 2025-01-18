@@ -16,6 +16,8 @@ import java.io.*;
         private int size = 7; // map size hard coded (change maybe later) 
         private int level; 
         //String key; // key name, not object (in item class)
+        String[] exits = {"You've found the gate to exit the garden!", "You found an opening in the forest!", "You found the door to the throne room!"};// exit dialog
+        String exitD; // dialog for winning level
         
         ArrayList<Item> inventory = new ArrayList<Item>(); // Create an ArrayList object of type Item
         
@@ -24,7 +26,7 @@ import java.io.*;
         
         this.level = level;
         this.Array = new int [this.size][this.size];
-        
+        exitD = exits[level-1];
         this.inventory = new ArrayList<>();
         
         //making the keys and assigning key names per level
@@ -122,66 +124,86 @@ import java.io.*;
             
             switch(Move) {
             case "so":
-            case "So":
-                
-            if (p1 < size-1 && Array[p1+1][p2] != 2) { //prevents out of bounds
-                Array[p1][p2] = 0;
-                Array[p1+=1][p2] = 1;
-                pickUpItem(item);
-                break;
-            } else {
-                System.out.println("Your path here is blocked, try another way.");
-                break;
-                }
-                
-            case "no":
-            case "No":
-                
-                if (p1 > 0 && Array[p1-1][p2] != 2) { //prevents out of bounds
-                    Array[p1][p2] = 0;
-                    Array[p1-=1][p2] = 1;
-                    pickUpItem(item);
+                case "So":
+
+                    if (p1 < size-1 && Array[p1+1][p2] != 2) { //prevents out of bounds
+                        if (Array[p1][p2] == Array[5][level+3-1]) { // leave the  level if exit location is reached
+                            System.out.println(exitD + " " + "Congratulations! You've moved on!");
+                            Running = false;
+                            break;
+                        }
+                        Array[p1][p2] = 0;
+                        Array[p1 += 1][p2] = 1; // continue as normal if not at exit
+                        pickUpItem(item);
+                        break;
+                    } else {
+                        System.out.println("Your path here is blocked, try another way.");
+                        break;
+                    }
+
+                case "no":
+                case "No":
+
+                    if (p1 > 0 && Array[p1-1][p2] != 2) { //prevents out of bounds
+                        if (Array[p1][p2] == Array[5][level+3-1]) { // leave the  level if exit location is reached
+                            System.out.println(exitD + " " + "Congratulations! You've moved on!");
+                            Running = false;
+                            break;
+                        }
+                        Array[p1][p2] = 0;
+                        Array[p1 -= 1][p2] = 1;
+                        pickUpItem(item);
+                        break;
+                    } else {
+                        System.out.println("Your path here is blocked, try another way.");
+                        break;
+                    }
+                case "ea":
+                case "Ea":
+
+                    if (p2 < size-1 && Array[p1][p2+1] != 2) {
+                        if (Array[p1][p2] == Array[5][level+3-1]) { // leave the  level if exit location is reached
+                            System.out.println(exitD + " " + "Congratulations! You've moved on!");
+                            Running = false;
+                            pickUpItem(item);
+                            break;
+                        }
+                        Array[p1][p2] = 0;
+                        Array[p1][p2 += 1] = 1;
+                        break;
+                    } else {
+                        System.out.println("Your path here is blocked, try another way.");
+                        break;
+                    }
+
+                case "we":
+                case "We":
+
+                    if (p2 > 0 && Array[p1][p2-1] != 2) {
+                        if (Array[p1][p2] == Array[5][level+3-1]) { // leave the  level if exit location is reached
+                            System.out.println(exitD + " " + "Congratulations! You've moved on!");
+                            Running = false;
+                            break;
+                        }
+                        Array[p1][p2] = 0;
+                        Array[p1][p2 -= 1] = 1;
+                        pickUpItem(item);
+                        break;
+                    } else {
+                        System.out.println("Your path here is blocked, try another way.");
+                        break;
+                    }
+
+                case "le":
+                case "Le":
+                    System.out.println("You have exited the game...");
+                    Running = false;
+                    input.close();
                     break;
-                } else {
-                    System.out.println("Your path here is blocked, try another way.");
+                default:
+                    System.out.println("I don't understand that.");
                     break;
-                }
-            case "ea":
-            case "Ea":
-                
-            if (p2 < size-1 && Array[p1][p2+1] != 2) {   
-                Array[p1][p2] = 0;
-                Array[p1][p2+=1] = 1;
-                pickUpItem(item);
-                break;
-            } else {
-                    System.out.println("Your path here is blocked, try another way.");
-                    break;
-                }
-                
-            case "we":
-            case "We":
-            
-            if (p2 > 0 && Array[p1][p2-1] != 2) { 
-                Array[p1][p2] = 0;
-                Array[p1][p2-=1] = 1;
-                pickUpItem(item);
-                break;
-            } else {
-                    System.out.println("Your path here is blocked, try another way.");
-                    break;
-                }
-            
-            case "le":
-            case "Le":
-                System.out.println("You have exited the game...");
-                Running = false;
-                input.close();
-                break;
-            default:
-                System.out.println("I don't understand that.");
-                break;
-        }
+            }
         
         for(int i=0;i<size;i++) {
             for(int x=0;x<size;x++) {
