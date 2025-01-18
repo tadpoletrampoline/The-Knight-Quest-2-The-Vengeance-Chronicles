@@ -8,7 +8,7 @@ public class Item {
 
     // constructor
     
-   public Item(String type, String name, boolean pickedUp){
+   public Item(){
         this.type = type;
         this.name = name;
         this.pickedUp = false;
