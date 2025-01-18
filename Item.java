@@ -4,14 +4,14 @@ public class Item {
 
     private String type; // there are type locks and type keys which can be used to perform their tasks
     private String name; // item name
-    private int value; // i knid of forgot what i was going for with this in the uml but i feel like i'll remember eventually
+    private boolean pickedUp; //for user to pick up items
 
     // constructor
     
-    public Item(String type, String name, int value){
+   public Item(String type, String name, boolean pickedUp){
         this.type = type;
         this.name = name;
-        this.value = value;
+        this.pickedUp = false;
     }
 
   
@@ -24,13 +24,22 @@ public class Item {
     public String getName(){
         return this.name;
     }
-
-    public int getValue(){
-        return this.value;
+    
+    public boolean isPickedUp() {
+        return pickedUp;
     }
+
     
     // setters
     public void setType(String t) {
 		type = t;
 	}
+	
+    public void setName(String n) {
+		name = n;
+	}
+	
+    public void pickUp() {
+        this.pickedUp = true;
+    }
 }
