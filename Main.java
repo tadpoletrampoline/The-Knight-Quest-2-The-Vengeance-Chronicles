@@ -58,8 +58,6 @@ public class Main{
         System.out.println("this is level one");
     }
 
-    // Methods for cutscene
-    //static void cutsene1() {System.out.println("hi)};
 
     public static void main(String[] args) {
 
@@ -73,8 +71,6 @@ public class Main{
 
         // lets player start the game
         menu();
-
-        //new MyFrame();
 
     }
 }
