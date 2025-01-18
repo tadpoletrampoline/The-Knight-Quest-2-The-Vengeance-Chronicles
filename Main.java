@@ -1,21 +1,14 @@
 import java.util.*;
+import java.io.*;
 
-public class Main {
+public class Main{
 
-    // variables
-    ArrayList<Item> items = new ArrayList<Item>(); // Create an ArrayList object of type Item
-
-    //setting up the game
-    int score = 0;
-    boolean hasItem = false;
-    int location = 1; // signifies location/level (we could use a while loop or something)
-    
     static Scanner options = new Scanner(System.in); //player options for the menu
-    
+
     static void menu(){
-        
+
         Boolean start = true; // control menu
-        
+
         System.out.println("menu ramble... press s to start...press i for intructions");
         String menu = options.nextLine();
 
@@ -24,29 +17,29 @@ public class Main {
                 System.out.println("\nstarting game... ... ... ...\n");
                 start = false;
                 gameIntro();
-                
-                
+
+
                 Map landscape = new Map(1); // initializing map object!!!
-                landscape.move(); 
+                landscape.move();
                 break;
 
             case "i":
                 instructions();
                 menu();
                 break;
-                
+
             case "0": //lets player exit game
                 System.out.println("bye bye");
                 System.exit(0);
 
-            default: 
+            default:
                 System.out.println("how dare you, please type in one of the proper options");
                 menu(); // recursion!!!
                 break;
         }
     }
 
-static void instructions(){
+    static void instructions(){
         System.out.println("these are the very cool instructions");
         System.out.println("if you want to do this then blah blah blah...");
 
@@ -70,10 +63,18 @@ static void instructions(){
 
     public static void main(String[] args) {
 
+        // variables
+        ArrayList<Item> items = new ArrayList<Item>(); // Create an ArrayList object of type Item
+
+        //setting up the game
+        int score = 0;
+        boolean hasItem = false;
+        int location = 1; // signifies location/level (we could use a while loop or something)
+
         // lets player start the game
         menu();
-        // new myFrame();
 
+        //new MyFrame();
 
     }
 }
