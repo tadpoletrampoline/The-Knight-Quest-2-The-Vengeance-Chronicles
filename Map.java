@@ -4,7 +4,7 @@ import java.io.*;
 // class to create mapping gample including movement and inserting puzzles
 
 public class Map {
-    
+
     //Coloured Text
     static String RED = "\u001B[31m";
     static String BLACK = "\033[0;30m";
@@ -14,7 +14,7 @@ public class Map {
     static String RESET = "\u001B[0m";
     static String BOLD = "\n\033[0;1m";
     static String UNBOLD = "\033[0;0m";
-    
+
     //Highlighted Text
     static String BLACK_BG = "\u001B[40m";
     static String RED_BG = "\u001B[41m";
@@ -65,7 +65,7 @@ public class Map {
             itemGrid[2][1] = potion;
 
             Item coinBag = new Item("a coin bag\n", "A bag of valuable gold coins!");
-            itemGrid[3][3] = coinBag;
+            itemGrid[4][1] = coinBag;
 
             // changes items present for lvl 2
         } else if (this.level == 2) {
@@ -109,12 +109,12 @@ public class Map {
                         this.Array[this.p1][this.p2] = 1;
                     }
                 } else if (level == 3) {
-                if (((x + i) ^ 4) / 2 == 1 && x < size - 1 && i < size - 1 && i < size - 1 && x > 0 && i > 0) {
-                    this.Array[i][x] = 2;
-                    this.Array[this.p1][this.p2] = 1;
+                    if (((x + i) ^ 4) / 2 == 1 && x < size - 1 && i < size - 1 && i < size - 1 && x > 0 && i > 0) {
+                        this.Array[i][x] = 2;
+                        this.Array[this.p1][this.p2] = 1;
+                    }
                 }
-            }
-                
+
             }
         }
 
@@ -133,7 +133,7 @@ public class Map {
     // method to start the next round
     public void nextLevel() {
 
-        if (level <= 3) {
+        if (level < 3) {
             new MyFrame(this.level);
             this.level++;
             p1 = 0;
@@ -256,7 +256,7 @@ public class Map {
                 case "so":
                 case "So":
 
-                    if (p1 <= size - 1 && Array[p1 + 1][p2] != 2) { //prevents out of bounds
+                    if (p1 < size - 1 && Array[p1 + 1][p2] != 2) { //prevents out of bounds
                         if (Array[p1][p2] == Array[5][level + 3 - 1] &&  unlockingDoor()) { // leave the  level if exit location is reached
                             System.out.println(YELLOW + exitD + " " + "Congratulations! You've moved on!\n" + RESET);
                             nextLevel();
@@ -275,7 +275,7 @@ public class Map {
                 case "no":
                 case "No":
 
-                    if (p1 >= 0  && Array[p1 - 1][p2] != 2) { //prevents out of bounds
+                    if (p1 > 0  && Array[p1 - 1][p2] != 2) { //prevents out of bounds
                         if (Array[p1][p2] == Array[5][level + 3 - 1] && unlockingDoor()) { // leave the  level if exit location is reached
                             System.out.println(YELLOW + exitD + " " + "Congratulations! You've moved on!\n" + RESET);
                             nextLevel();
