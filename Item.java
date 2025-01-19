@@ -8,7 +8,7 @@ public class Item {
 
     // constructor
     
-   public Item(){
+   public Item(String name, String type){
         this.type = type;
         this.name = name;
         this.pickedUp = false;
@@ -16,7 +16,7 @@ public class Item {
 
   
     // getters 
-    
+
     public String getType() {
         return this.type;
     }
@@ -41,5 +41,10 @@ public class Item {
 	
     public void pickUp() {
         this.pickedUp = true;
+    }
+    
+    @Override
+    public String toString() {
+        return name;
     }
 }
