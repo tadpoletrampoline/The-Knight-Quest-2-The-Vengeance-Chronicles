@@ -72,11 +72,11 @@ public class Main {
                 break;
                 
             case "l": //lets player exit game
-                System.out.println("bye bye");
+                System.out.println("Bye bye, play again soon!");
                 System.exit(0);
 
             default: 
-                System.out.println("how dare you, please type in one of the proper options");
+                System.out.println("That is not a valid input, please type in one of the proper options.\n");
                 menu(); // recursion!!!
                 break;
         }
