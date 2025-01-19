@@ -33,22 +33,41 @@ public class Map {
 
         //making the keys and assigning key names per level
 
-        Solution puzzleKey = new Solution("key", "key");
+        Solution puzzleKey = new Solution("key", "mysterious key to the garden gate.");
 
         if (this.level == 1) {
+            
             puzzleKey.setName("a key");
             puzzleKey.setType("mysterious key to the garden gate.");
             itemGrid[4][0] = puzzleKey; // Place key on the map
+            
+            //adding some extra items! (can change player health or score)
+            Item potion = new Item("a potion", "A dangerous concoction...");
+            itemGrid[2][1] = potion;
+            
+            Item coinBag = new Item("a coin bag", "A bag of valuable gold coins!");
+            itemGrid[3][3] = coinBag;
 
-
-        } else if (this.level == 2) {
-            Item axe = new Item("an axe", "heavy axe to chop down the big tree.");
+            // changes items present for lvl 2
+        } else if (this.level == 2) { 
+            
+            Solution axe = new Solution("an axe", "heavy axe to chop down the big tree.");
             itemGrid[0][2] = axe; // Place axe on the map
+            
+            //adding some extra items! (can change player health or score)
+            Item potion = new Item("a potion", "A dangerous concoction...");
+            itemGrid[4][3] = potion;
 
+
+            //changes items present for lvl 3
         } else if (level == 3) {
-            puzzleKey.setName("a magic wand");
-            Item wand = new Item("magic wand", "shimmering wand to take the spell off the castle.");
+            
+            Solution wand = new Solution("magic wand", "shimmering wand to take the spell off the castle.");
             itemGrid[5][6] = wand; // Place magic wand on the map
+            
+            //adding some extra items! (can change player health or score)
+            Item potion = new Item("a potion", "A dangerous concoction...");
+            itemGrid[2][4] = potion;
         }
 
         // create grid             
@@ -133,6 +152,20 @@ public class Map {
     
     // showing the player's inventory
     public void showInventory() {
+        // Using bubbleSort to sort the inventory from item with the least characters to most
+        for (int i = 0; i < inventory.size() - 1; i++) {
+        for (int j = 0; j < inventory.size() - 1 - i; j++) {
+            Item item1 = inventory.get(j);
+            Item item2 = inventory.get(j + 1);
+            
+            // Compare the lengths of the item names
+            if (item1.getName().length() > item2.getName().length()) {
+                // Swap the items if they are in the wrong order
+                inventory.set(j, item2);
+                inventory.set(j + 1, item1);
+            }
+        }
+    }
         if (inventory.isEmpty()) {
             System.out.println("Your inventory is empty.");
         } else {
