@@ -7,7 +7,7 @@ public class Map {
 
     //Coloured Text
     static String RED = "\u001B[31m";
-    static String BLACK = "\033[0;30m";
+    static String BLACK = "\u001B[30m";
     static String YELLOW = "\u001B[33m";
     static String MAGENTA = "\u001B[35m";
     static String BLUE = "\u001B[34m";
@@ -335,7 +335,8 @@ public class Map {
                     input.close();
                     break;
 
-                case "te":
+                case "in":
+                case "In":
                     showInventory();
                     break;
 
