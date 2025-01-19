@@ -108,7 +108,24 @@ public class Main {
 
         // lets player start the game
         menu();
-        
+
+        try {
+
+            FileWriter results = new FileWriter("Stats.txt");
+            results.write("--------------------------\n\nGreat job!!\n!");
+            results.write("Here is how you did on the game: \n");
+            results.write("Score: ");
+            results.write("Remaing health: ");
+
+            results.close();
+            System.out.println("\nSuccessfully gathered player statistic.");
+
+        } catch (IOException e) {
+
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+
+        }
 
 
 
