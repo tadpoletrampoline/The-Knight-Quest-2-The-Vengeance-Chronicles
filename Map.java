@@ -78,12 +78,24 @@ public class Map {
 
 
                 // creates patterns of making values 2 as borders * will edit later to be a complex path
+                // creates patterns of making values 2 as borders * will edit later to be a complex path
                 if (level == 1) {
                     if (((x + i) ^ 5) / 2 == 0 && x < size - 1 && i < size - 1 && i < size - 1 && x > 0 && i > 0) {
                         this.Array[i][x] = 2;
                         this.Array[this.p1][this.p2] = 1;
                     }
+                } else if (level == 2) {
+                    if (((x + i) ^ 7) / 2 == 0 && x < size - 1 && i < size - 1 && i < size - 1 && x > 0 && i > 0) {
+                        this.Array[i][x] = 2;
+                        this.Array[this.p1][this.p2] = 1;
+                    }
+                } else if (level == 3) {
+                if (((x + i) ^ 4) / 2 == 1 && x < size - 1 && i < size - 1 && i < size - 1 && x > 0 && i > 0) {
+                    this.Array[i][x] = 2;
+                    this.Array[this.p1][this.p2] = 1;
                 }
+            }
+                
             }
         }
 
