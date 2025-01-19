@@ -150,7 +150,7 @@ public class Main {
             FileWriter results = new FileWriter("Stats.txt");
             results.write("--------------------------\n\nGreat job!!\n!");
             results.write("Here is how you did on the game: \n");
-            results.write("Score: ");
+            results.write("Score: \n");
             results.write("Remaing health: ");
 
             results.close();
