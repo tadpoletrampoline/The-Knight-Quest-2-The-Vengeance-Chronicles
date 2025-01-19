@@ -8,16 +8,18 @@ public class Map {
     //instance variables
 
     // delete private int Row,Col,Num1,Num2;
-    private int p1 = 0;
-    private int p2 = 0;
+    private static int p1 = 0;
+    private static int p2 = 0;
     private String Move;
     private boolean Running = true;
-    int Array[][];
+    static int Array[][];
     private int size = 7; // map size hard coded (change maybe later)
     private int level;
-    //String key; // key name, not object (in item class)
     String[] exits = {"You've found the gate to exit the garden!", "You found an opening in the forest!", "You found the door to the throne room!"};// exit dialog
     String exitD; // dialog for winning level
+    
+    static ArrayList<Item> inventory = new ArrayList<Item>(); // Create an ArrayList object of type Item
+    static Item[][] itemGrid; //to put the items on the map
 
 
     // constructor !!!
@@ -26,29 +28,34 @@ public class Map {
         this.level = level;
         this.Array = new int[this.size][this.size];
         exitD = exits[level - 1];
+        this.inventory = new ArrayList<>();
+        itemGrid = new Item[size][size];
 
         //making the keys and assigning key names per level
 
-        Solution puzzleKey = new Solution();
+        Solution puzzleKey = new Solution("key", "key");
 
         if (this.level == 1) {
-            puzzleKey.setName("key");
-            puzzleKey.setType("key");
+            puzzleKey.setName("a key");
+            puzzleKey.setType("mysterious key to the garden gate.");
+            itemGrid[4][0] = puzzleKey; // Place key on the map
 
 
         } else if (this.level == 2) {
-            puzzleKey.setName("axe");
+            Item axe = new Item("an axe", "heavy axe to chop down the big tree.");
+            itemGrid[0][2] = axe; // Place axe on the map
 
         } else if (level == 3) {
-            puzzleKey.setName("magic wand");
+            puzzleKey.setName("a magic wand");
+            Item wand = new Item("magic wand", "shimmering wand to take the spell off the castle.");
+            itemGrid[5][6] = wand; // Place magic wand on the map
         }
 
         // create grid             
         for (int i = 0; i < size; i++) {
             for (int x = 0; x < size; x++) {
                 this.Array[i][x] = 0;
-                this.Array[p1][p2] = 1;
-                Array[5][level + 3] = 3; // exit value is given 3
+                
 
                 // creates patterns of making values 2 as borders * will edit later to be a complex path
                 if (level == 1) {
@@ -63,6 +70,9 @@ public class Map {
 
             }
         }
+        
+        this.Array[p1][p2] = 1;
+        Array[5][level + 3] = 3; // exit value is given 3
 
         // print grid for debugging purposed
         for (int i = 0; i < size; i++) {
@@ -76,18 +86,85 @@ public class Map {
     // method to start the next round
     public void nextLevel() {
 
-        if (this.level < 3) {
-            new MyFrame(this.level);
-            this.level++;
-            System.out.println("Level " + this.level);
-            Map landscape = new Map(this.level); // start new level
+        if (level < 3) {
+            level++;
+            Map landscape = new Map(level); // start new level
             landscape.move();
         } else {
             System.out.println("This is where we start boss level");
         }
     }
 
+    // picking up items
+    public static void pickUpItem() {
+        
+        Item item = itemGrid[p1][p2];
+        
+        if (item != null && !item.isPickedUp()) {
+            item.pickUp();
+            inventory.add(item);
+            System.out.println("You picked up " + item.getName() + "!");
+            itemGrid[p1][p2] = null; //taking item out
+            //Array[p1][p2] = 0;  // emptying space
+        } 
+        else if (item != null) {
+            System.out.println(item.getName() + " has already been picked up.");
+        } else {
+            System.out.println("No item here to pick up.");
+        }
+    }
+  
+    
+    //Checks if there is an item/key or not where the player is
+    public static void checkTile() {
+        int tile = Array[p1][p2];
+        
+        if (itemGrid[p1][p2] != null) {  // Check if there's an item
+            System.out.println("You found an item!");
+            pickUpItem();
+        } else if (tile == 3) {  // Locked Door
+            unlockingDoor();
+        } else if (tile == 4) {  // Open Door
+            System.out.println("The door is open!");
+        } else {
+            System.out.println("Nothing important here. Keep searching.");
+        }
+    }
+    
+    // showing the player's inventory
+    public void showInventory() {
+        if (inventory.isEmpty()) {
+            System.out.println("Your inventory is empty.");
+        } else {
+            System.out.println("Inventory: ");
+            for (Item item : inventory) {
+                System.out.println("- " + item.getName());
+            }
+        }
+    }
+    
+    // checks if player can unlock the exit puzzle or not
+    public static void unlockingDoor() {
+        boolean hasKey = false;
+        for (Item invItem : inventory) {
+            if (invItem instanceof Solution) {
+                hasKey = true;
+                break;
+            }
+        }
+
+        if (hasKey) {
+            System.out.println("You unlocked the path!");
+            Array[p1][p2] = 4;  // Change to open door
+        } else {
+            System.out.println("The exit is blocked. You must find something to open the path.");
+        }
+    }
+    
+
+
     public void move() {
+        
 
         while (Running) {
 
@@ -113,6 +190,7 @@ public class Map {
                         }
                         Array[p1][p2] = 0;
                         Array[p1 += 1][p2] = 1; // continue as normal if not at exit
+                        checkTile();
                         break;
                     } else {
                         System.out.println("Your path here is blocked, try another way.");
@@ -131,6 +209,7 @@ public class Map {
                         }
                         Array[p1][p2] = 0;
                         Array[p1 -= 1][p2] = 1;
+                        checkTile();
                         break;
                     } else {
                         System.out.println("Your path here is blocked, try another way.");
@@ -148,6 +227,7 @@ public class Map {
                         }
                         Array[p1][p2] = 0;
                         Array[p1][p2 += 1] = 1;
+                        checkTile();
                         break;
                     } else {
                         System.out.println("Your path here is blocked, try another way.");
@@ -166,6 +246,7 @@ public class Map {
                         }
                         Array[p1][p2] = 0;
                         Array[p1][p2 -= 1] = 1;
+                        checkTile();
                         break;
                     } else {
                         System.out.println("Your path here is blocked, try another way.");
@@ -178,10 +259,17 @@ public class Map {
                     Running = false;
                     input.close();
                     break;
+                    
+                case "te":
+                showInventory();
+                break;
+                
                 default:
                     System.out.println("I don't understand that.");
                     break;
             }
+            
+            
 
             // temporary printing of map for debugging
             for (int i = 0; i < size; i++) {
@@ -194,12 +282,10 @@ public class Map {
         }
 
     }
+    
 
     // getters
 
-    public int getLevel() {
-        return this.level;
-    }
     // setters
 
 }
