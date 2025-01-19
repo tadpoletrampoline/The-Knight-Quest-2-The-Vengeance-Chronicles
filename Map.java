@@ -110,7 +110,7 @@ public class Map {
             Map landscape = new Map(level); // start new level
             landscape.move();
         } else {
-            System.out.println("This is where we start boss level");
+            Boss game = new Boss(); // start final boss level
         }
     }
 
