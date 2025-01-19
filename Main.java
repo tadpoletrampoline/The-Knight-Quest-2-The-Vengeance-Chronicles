@@ -108,15 +108,55 @@ public class Main {
 
     }
 
-    static void levelOne(){
-        System.out.println("this is level one");
-    }
+    //method for background music
+    public static void playMusic(String location) {
 
-    // Methods for cutscene
-    //static void cutsene1() {System.out.println("hi)};
+        try {
+            File musicPath = new File(location);
+
+            if (musicPath.exists()) {
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInput);
+                clip.start();
+            } else {
+                System.out.println("File not found");
+            }
+
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
 
     public static void main(String[] args) {
 
+        //plays music
+        String filePath = "song.wav";
+        playMusic(filePath);
+        JOptionPane.showMessageDialog(null, "Welcome to the main.Knight Quest Game!");
+
+        // lets player start the game
+        menu();
+
+        // making file of game stats
+        try {
+
+            FileWriter results = new FileWriter("Stats.txt");
+            results.write("--------------------------\n\nGreat job!!\n!");
+            results.write("Here is how you did on the game: \n");
+            results.write("Score: ");
+            results.write("Remaing health: ");
+
+            results.close();
+            System.out.println("\nSuccessfully gathered player statistic.");
+
+        } catch (IOException e) {
+
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+
+        }
+    }
         // lets player start the game
         menu();
         
