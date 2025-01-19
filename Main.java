@@ -136,7 +136,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //plays music
+        //plays music - comment this section out if needed
         String filePath = "song.wav";
         playMusic(filePath);
         JOptionPane.showMessageDialog(null, "Welcome to the main.Knight Quest Game!");
