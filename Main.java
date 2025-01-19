@@ -109,8 +109,8 @@ public class Main {
         String username = options.nextLine();
         Knight person = new Knight(username);/// knight object created!!
         
-        System.out.println("\n\n" +RED_BG+ person.getName() + " are you ready to defeat the wizard? Let's begin your journey...\n\n" + RESET);
-        System.out.println("To travel type: north, south, east or west -- (hint: you may also type the first two letters!\n");
+        System.out.println("\n\n" +RED_BG+ person.getName() + " are you ready to defeat the wizard? Let's begin your journey..." + RESET);
+        System.out.println("\n\nTo travel type: north, south, east or west -- (hint: you may also type the first two letters!\n");
 
     }
 
