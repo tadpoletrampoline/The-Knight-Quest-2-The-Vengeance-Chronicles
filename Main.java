@@ -7,6 +7,7 @@ public class Main {
     
     //Coloured Text
     static String RED = "\u001B[31m";
+    static String BLACK = "\033[0;30m";
     static String YELLOW = "\u001B[33m";
     static String MAGENTA = "\u001B[35m";
     static String BLUE = "\u001B[34m";
@@ -49,7 +50,7 @@ public class Main {
 
         switch(menu) {
             case "s": //starting the game
-                System.out.println("\n... ... ... ...STARTING GAME... ... ... ...\n");
+                System.out.println(BLUE_BG+"\n... ... ... ...STARTING GAME... ... ... ...\n"+RESET);
                 
                 start = false;
                 gameIntro();
@@ -76,8 +77,17 @@ public class Main {
     }
 
     static void instructions(){
-        System.out.println("these are the very cool instructions");
-        System.out.println("if you want to do this then blah blah blah...");
+        System.out.println(GREEN_BG + "\n\nHere are the controls!\n" + RESET);
+        
+        System.out.println("This game includes an invisible map so you will essentially be walking blind. Make sure to remember your path!\n");
+        System.out.println("To move around the map type the following:");
+        System.out.println(BOLD + BLUE+ "\'north\', \'south\', \'east\', or \'west\'." + RESET + " You may also type the "+BOLD+ BLUE+"first two letters"+RESET+" of each.\n");
+        
+        System.out.println("While traversing through the map you will pick up " + BLUE + "items " + RESET + "on your way!");
+        System.out.println("These items will either cause " + RED+ "damage "+ RESET+ "to your health bar, " + YELLOW+ "increase "+RESET+ "your score, or help you "+MAGENTA+"unlock "+ RESET+ "the path to the next level!\n");
+        System.out.println("To check what items you have you may type: " + BOLD+ BLUE+ "\'inv\' or \'inventory\'\n" + RESET);
+        
+        System.out.println(GREEN_BG + "That's all for the instructions. Good luck!\n\n" +RESET);
 
     }
 
@@ -94,6 +104,7 @@ public class Main {
         Knight person = new Knight(username);/// knight object created!!
         
         System.out.println("\n\n" +RED_BG+ person.getName() + " are you ready to defeat the wizard? Let's begin your journey...\n\n" + RESET);
+        System.out.println("To travel type: north, south, east or west -- (hint: you may also type the first two letters!\n");
 
     }
 
@@ -108,24 +119,7 @@ public class Main {
 
         // lets player start the game
         menu();
-
-        try {
-
-            FileWriter results = new FileWriter("Stats.txt");
-            results.write("--------------------------\n\nGreat job!!\n!");
-            results.write("Here is how you did on the game: \n");
-            results.write("Score: ");
-            results.write("Remaing health: ");
-
-            results.close();
-            System.out.println("\nSuccessfully gathered player statistic.");
-
-        } catch (IOException e) {
-
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-
-        }
+        
 
 
 
