@@ -31,6 +31,10 @@ public class Knight {
     public int getHealth() {
         return this.health;
     }
+
+    public int getScore() {
+        return this.score;
+    }
     
     // setters
     public void increaseScore(int num) {
