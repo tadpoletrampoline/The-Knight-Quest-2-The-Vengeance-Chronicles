@@ -4,6 +4,26 @@ import java.io.*;
 // class to create mapping gample including movement and inserting puzzles
 
 public class Map {
+    
+    //Coloured Text
+    static String RED = "\u001B[31m";
+    static String BLACK = "\033[0;30m";
+    static String YELLOW = "\u001B[33m";
+    static String MAGENTA = "\u001B[35m";
+    static String BLUE = "\u001B[34m";
+    static String RESET = "\u001B[0m";
+    static String BOLD = "\n\033[0;1m";
+    static String UNBOLD = "\033[0;0m";
+    
+    //Highlighted Text
+    static String BLACK_BG = "\u001B[40m";
+    static String RED_BG = "\u001B[41m";
+    static String GREEN_BG = "\u001B[42m";
+    static String YELLOW_BG = "\u001B[43m";
+    static String BLUE_BG = "\u001B[44m";
+    static String PURPLE_BG = "\u001B[45m";
+    static String CYAN_BG = "\u001B[46m";
+    static String WHITE_BG = "\u001B[47m";
 
     //instance variables
 
@@ -15,12 +35,11 @@ public class Map {
     static int Array[][];
     private int size = 7; // map size hard coded (change maybe later)
     private int level;
-    String[] exits = {"You've found the gate to exit the garden!", "You found an opening in the forest!", "You found the door to the throne room!"};// exit dialog
+    String[] exits = {"\nYou've found the gate to exit the garden!", "\nYou found an opening in the forest!", "\nYou found the door to the throne room!"};// exit dialog
     String exitD; // dialog for winning level
 
     static ArrayList<Item> inventory = new ArrayList<Item>(); // Create an ArrayList object of type Item
     static Item[][] itemGrid; //to put the items on the map
-
 
     // constructor !!!
     public Map(int level) {
@@ -37,36 +56,36 @@ public class Map {
 
         if (this.level == 1) {
 
-            puzzleKey.setName("a key");
+            puzzleKey.setName("a key\n");
             puzzleKey.setType("mysterious key to the garden gate.");
             itemGrid[4][0] = puzzleKey; // Place key on the map
 
             //adding some extra items! (can change player health or score)
-            Item potion = new Item("a potion", "A dangerous concoction...");
+            Item potion = new Item("a potion\n", "A dangerous concoction...");
             itemGrid[2][1] = potion;
 
-            Item coinBag = new Item("a coin bag", "A bag of valuable gold coins!");
+            Item coinBag = new Item("a coin bag\n", "A bag of valuable gold coins!");
             itemGrid[3][3] = coinBag;
 
             // changes items present for lvl 2
         } else if (this.level == 2) {
 
-            Solution axe = new Solution("an axe", "heavy axe to chop down the big tree.");
+            Solution axe = new Solution("an axe\n", "heavy axe to chop down the big tree.");
             itemGrid[0][2] = axe; // Place axe on the map
 
             //adding some extra items! (can change player health or score)
-            Item potion = new Item("a potion", "A dangerous concoction...");
+            Item potion = new Item("a potion\n", "A dangerous concoction...");
             itemGrid[2][3] = potion;
 
 
             //changes items present for lvl 3
         } else if (level == 3) {
 
-            Solution wand = new Solution("magic wand", "shimmering wand to take the spell off the castle.");
+            Solution wand = new Solution("magic wand\n", "shimmering wand to take the spell off the castle.");
             itemGrid[4][3] = wand; // Place magic wand on the map
 
             //adding some extra items! (can change player health or score)
-            Item potion = new Item("a potion", "A dangerous concoction...");
+            Item potion = new Item("a potion\n", "A dangerous concoction...");
             itemGrid[3][3] = potion;
         }
 
@@ -134,14 +153,14 @@ public class Map {
         if (item != null && !item.isPickedUp()) {
             item.pickUp();
             inventory.add(item);
-            System.out.println("You picked up " + item.getName() + "!");
+            System.out.println("You picked up " + YELLOW + item.getName() + RESET + "!");
             itemGrid[p1][p2] = null; //taking item out
-            //Array[p1][p2] = 0;  // emptying space
+
         }
         else if (item != null) {
-            System.out.println(item.getName() + " has already been picked up.");
+            System.out.println("\n"+ item.getName() + " has already been picked up.");
         } else {
-            System.out.println("No item here to pick up.");
+            System.out.println("\nNo item here to pick up.");
         }
     }
 
@@ -153,7 +172,7 @@ public class Map {
         int tile = Array[p1][p2];
 
         if (itemGrid[p1][p2] != null) {  // Check if there's an item
-            System.out.println("You found an item!");
+            System.out.println(BLUE + "\nYou found an item!" + RESET);
             pickUpItem();
         } else if (tile == 3) {  // Locked Door
             unlockingDoor();
@@ -161,10 +180,10 @@ public class Map {
             Array[p1][p2] = 3; // resets grid number for visual testing
             return haveKey;
         } else if (tile == 4) {  // Open Door
-            System.out.println("The door is open!");
+            System.out.println("The door is open!\n");
             return haveKey;
         } else {
-            System.out.println("Nothing important here. Keep searching.");
+            System.out.println("\nNothing important here. Keep searching.\n");
             return haveKey;
         }
         return haveKey;
@@ -188,11 +207,11 @@ public class Map {
             }
         }
         if (inventory.isEmpty()) {
-            System.out.println("Your inventory is empty.");
+            System.out.println("\nYour inventory is empty.");
         } else {
             System.out.println("Inventory: ");
             for (Item item : inventory) {
-                System.out.println("- " + item.getName());
+                System.out.println(BLUE + "- " + item.getName() + RESET);
             }
         }
     }
@@ -208,10 +227,10 @@ public class Map {
         }
 
         if (hasKey) {
-            System.out.println("You unlocked the path!");
+            System.out.println("\nYou unlocked the path!");
             Array[p1][p2] = 4;  // Change to open door
         } else {
-            System.out.println("The exit is blocked. You must find something to open the path.");
+            System.out.println("\nThe exit is blocked. You must find something to open the path.");
             return hasKey;
         }
         return hasKey;
@@ -229,7 +248,7 @@ public class Map {
             try { // error handling for single letter prompts
                 this.Move = input.next().substring(0, 2); // taking in prompts
             } catch (StringIndexOutOfBoundsException e) {
-                System.out.println("Please give a valid prompt (longer than one letter)");
+                System.out.println("Please give a valid prompt (longer than one letter)\n");
                 this.Move = input.next().substring(0, 2);
             }
 
@@ -239,7 +258,7 @@ public class Map {
 
                     if (p1 <= size - 1 && Array[p1 + 1][p2] != 2) { //prevents out of bounds
                         if (Array[p1][p2] == Array[5][level + 3 - 1] &&  unlockingDoor()) { // leave the  level if exit location is reached
-                            System.out.println(exitD + " " + "Congratulations! You've moved on!");
+                            System.out.println(YELLOW + exitD + " " + "Congratulations! You've moved on!\n" + RESET);
                             nextLevel();
                             Running = false;
                             break;
@@ -249,7 +268,7 @@ public class Map {
                         checkTile();
                         break;
                     } else {
-                        System.out.println("Your path here is blocked, try another way.");
+                        System.out.println("\nYour path here is blocked, try another way.\n");
                         break;
                     }
 
@@ -258,7 +277,7 @@ public class Map {
 
                     if (p1 >= 0  && Array[p1 - 1][p2] != 2) { //prevents out of bounds
                         if (Array[p1][p2] == Array[5][level + 3 - 1] && unlockingDoor()) { // leave the  level if exit location is reached
-                            System.out.println(exitD + " " + "Congratulations! You've moved on!");
+                            System.out.println(YELLOW + exitD + " " + "Congratulations! You've moved on!\n" + RESET);
                             nextLevel();
                             Running = false;
                             break;
@@ -268,7 +287,7 @@ public class Map {
                         checkTile();
                         break;
                     } else {
-                        System.out.println("Your path here is blocked, try another way.");
+                        System.out.println("\nYour path here is blocked, try another way.\n");
                         break;
                     }
                 case "ea":
@@ -276,7 +295,7 @@ public class Map {
 
                     if (p2 < size - 1 && Array[p1][p2 + 1] != 2) {
                         if (Array[p1][p2] == Array[5][level + 3 - 1] && unlockingDoor()) { // leave the  level if exit location is reached
-                            System.out.println(exitD + " " + "Congratulations! You've moved on!");
+                            System.out.println(YELLOW + exitD + " " + "Congratulations! You've moved on!\n" + RESET);
                             nextLevel();
                             Running = false;
                             break;
@@ -286,7 +305,7 @@ public class Map {
                         checkTile();
                         break;
                     } else {
-                        System.out.println("Your path here is blocked, try another way.");
+                        System.out.println("Your path here is blocked, try another way.\n");
                         break;
                     }
 
@@ -295,7 +314,7 @@ public class Map {
 
                     if (p2 > 0 && Array[p1][p2 - 1] != 2) {
                         if (Array[p1][p2] == Array[5][level + 3 - 1] && unlockingDoor()) { // leave the  level if exit location is reached
-                            System.out.println(exitD + " " + "Congratulations! You've moved on!");
+                            System.out.println(YELLOW + exitD + " " + "Congratulations! You've moved on!\n" + RESET);
                             nextLevel();
                             Running = false;
                             break;
@@ -305,13 +324,13 @@ public class Map {
                         checkTile();
                         break;
                     } else {
-                        System.out.println("Your path here is blocked, try another way.");
+                        System.out.println("Your path here is blocked, try another way.\n");
                         break;
                     }
 
                 case "le":
                 case "Le":
-                    System.out.println("You have exited the game...");
+                    System.out.println("You have exited the game...\n");
                     Running = false;
                     input.close();
                     break;
@@ -321,7 +340,7 @@ public class Map {
                     break;
 
                 default:
-                    System.out.println("I don't understand that.");
+                    System.out.println("I don't understand that.\n");
                     break;
             }
 
