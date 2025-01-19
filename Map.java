@@ -82,7 +82,7 @@ public class Map {
         } else if (level == 3) {
 
             Solution wand = new Solution("magic wand\n", "shimmering wand to take the spell off the castle.");
-            itemGrid[4][3] = wand; // Place magic wand on the map
+            itemGrid[2][3] = wand; // Place magic wand on the map
 
             //adding some extra items! (can change player health or score)
             Item potion = new Item("a potion\n", "A dangerous concoction...");
@@ -133,7 +133,7 @@ public class Map {
     // method to start the next round
     public void nextLevel() {
 
-        if (level < 3) {
+        if (level <= 3) {
             new MyFrame(this.level);
             this.level++;
             p1 = 0;
