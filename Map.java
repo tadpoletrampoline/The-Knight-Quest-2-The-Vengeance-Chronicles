@@ -122,12 +122,12 @@ public class Map {
         Array[5][level + 3] = 3; // exit value is given 3
 
         // print grid for debugging purposed
-        for (int i = 0; i < size; i++) {
+        /*for (int i = 0; i < size; i++) {
             for (int x = 0; x < size; x++) {
                 System.out.print(this.Array[i][x] + "\t");
             }
             System.out.println();
-        }
+        }*/
 
     }
     // method to start the next round
@@ -348,12 +348,12 @@ public class Map {
 
 
             // temporary printing of map for debugging
-            for (int i = 0; i < size; i++) {
+            /*for (int i = 0; i < size; i++) {
                 for (int x = 0; x < size; x++) {
                     System.out.print(Array[i][x] + "\t");
                 }
                 System.out.println();
-            }
+            }*/
 
         }
 
