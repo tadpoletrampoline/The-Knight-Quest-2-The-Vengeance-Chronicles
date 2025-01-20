@@ -16,7 +16,7 @@ public class MyPanel extends JPanel{
 
         image = new ImageIcon("src/garden.png").getImage();
         forest = new ImageIcon("src/scene2.png").getImage();
-        end = new ImageIcon("src/scene3.png").getImage();
+        end = new ImageIcon("src/end.png").getImage();
 
 
     }
